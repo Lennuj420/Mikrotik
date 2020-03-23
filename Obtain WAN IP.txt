@@ -1,0 +1,7 @@
+How to Obtain WAN IP from ISP
+1. go to interface
+2. rename ethernet ports
+3. IP > DHCP Client
+	1. select interface
+	2. check "use peer DNS and NTP"
+	3. apply and ok
