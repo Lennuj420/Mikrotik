@@ -57,15 +57,15 @@ add chain=prerouting connection-mark=streaming_conn action=mark-packet new-packe
 add chain=prerouting connection-mark=streaming action=mark-routing new-routing-mark=main;
 #all_traffi
 add chain=prerouting action=mark-connection new-connection-mark=all_traffic passthrough=yes comment="all_traffic";
-#light
+#light_download
 add chain=prerouting connection-bytes=1-100000 connection-mark=all_traffic action=mark-connection  new-connection-mark=light_traffic_conn passthrough=yes comment="light_traffic_conn";
 
-#heavy
+#heavy_download
 add chain=prerouting connection-mark=!light_traffic action=mark-connection new-connection-mark=heavy_traffic_conn passthrough=yes comment="heavy_traffic-conn";
 
-#light
+#light_upload
 add chain=prerouting connection-mark=light_traffic_conn new-packet-mark=light_traffic_packet passthrough=yes comment="light_traffic_packet";
 add chain=prerouting connection-mark=light_traffic action=mark-routing new-routing-mark=main passthrough=no;
-#heavy
+#heavy_upload
 add chain=prerouting connection-mark=heavy_traffic_conn new-packet-mark=heavy_traffic_packet passthrough=yes comment="heavy_traffic_packet";
 add chain=prerouting connection-mark=heavy_traffic action=mark-routing new-routing-mark=main passthrough=no;
