@@ -79,7 +79,7 @@
   #set telegram message new sale
   # :log info "telegram notification"; #debug
   :if ($enableTelegram = true) do={ 
-    :local message "Vendo: $vendo %0AVoucher: $user %0AIP: $address %0AAmount: $amt %0AExpiration: $validUntil %0A%0ADaily Sales: $newtodayincome %0AMonthly Sales: $newmonthlyincome %0A%0AActive Users: $activeUsers";
+    :local message "Vendo: $vendo %0AVoucher: $user %0AAmount: $amt %0AExpiration: $validUntil %0A%0AActive Users: $activeUsers";
     /tool fetch keep-result=no url=("https://api.telegram.org/bot".$botToken."/sendmessage\?chat_id=".$chatID."&text=".$message);
   }
 }
